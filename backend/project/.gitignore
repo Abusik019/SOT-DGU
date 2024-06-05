@@ -78,6 +78,7 @@ celerybeat.pid
 intense-project-backend/.env
 .env.docker
 .venv
+.env
 env/
 venv/
 ENV/
