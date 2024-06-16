@@ -6,7 +6,6 @@ class User(AbstractUser):
     """
     Модель пользователя.
     """
-    image = models.CharField('Аватар', max_length=500, blank=True, null=True)
 
     class Meta:
         verbose_name = 'Пользователь'
@@ -14,3 +13,51 @@ class User(AbstractUser):
 
     def __str__(self):
         return f'{self.username}'
+
+
+class Presentation(models.Model):
+    """
+    Модель презентаций.
+    """
+    title = models.CharField('Название', max_length=155)
+    link = models.URLField('url')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Презентация'
+        verbose_name_plural = 'Презентации'
+
+    def __str__(self):
+        return f'{self.title}'
+
+
+class Materials(models.Model):
+    """
+    Модель видеомамтериалов.
+    """
+    title = models.CharField('Название', max_length=155)
+    link = models.URLField('url')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Видеоматериал'
+        verbose_name_plural = 'Видеоматериалы'
+
+    def __str__(self):
+        return f'{self.title}'
+
+
+class Documents(models.Model):
+    """
+    Модель нормативных документов.
+    """
+    title = models.CharField('Название', max_length=155)
+    link = models.URLField('url')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Документ'
+        verbose_name_plural = 'Документы'
+
+    def __str__(self):
+        return f'{self.title}'
