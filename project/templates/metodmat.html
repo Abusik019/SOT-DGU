@@ -1,0 +1,19 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %}
+    <div class="flex justify-center mt-8">
+        <img src="/static/images/smapse-dagestanskij-gosudarstvennyj-universitet-1.png" class="rounded-lg w-1/3 h-auto">
+        <img src="/static/images/s.jpg" class="rounded-lg w-1/4 h-auto ml-4">
+    </div>
+    <div class="max-w-3xl mx-auto px-8 py-24 text-center">
+        <h1>Методические документы.</h1>
+        <ul>
+            {% for metod in metods %}
+                <div class="bg-gray-200 p-6 rounded-lg shadow-md text-left mt-5">
+                    {{ metod.title }}
+                    <li><a href="{{ metod.link }}" class="text-blue-500 underline text-lg">Посмотреть</a></li>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

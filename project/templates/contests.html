@@ -1,0 +1,25 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %}
+    <div class="flex justify-center mt-8">
+        <img src="/static/images/smapse-dagestanskij-gosudarstvennyj-universitet-1.png" class="rounded-lg w-1/3 h-auto">
+        <img src="/static/images/s.jpg" class="rounded-lg w-1/4 h-auto ml-4">
+    </div>
+    <div class="max-w-3xl mx-auto px-8 py-24 text-center">
+        <h1>Конкурсы.</h1>
+        <div class="space-y-6">
+            {% for contest in contests %}
+                <div class="bg-gray-200 p-6 rounded-lg shadow-md text-left">
+                    <h2 class="text-xl font-semibold mb-2">Объявление</h2>
+                    <p class="text-lg mb-4"><b>{{ contest.title }}</b></p>
+                    <p class="mb-4">Начинается {{ contest.date }}</p>
+                    <ul class="space-y-2">
+                        <li><a href="{{ contest.order.url }}" class="text-blue-500 underline text-lg">Приказ о конкурсе</a></li>
+                        <li><a href="{{ contest.members.url }}" class="text-blue-500 underline text-lg">Участники</a></li>
+                        <li><a href="{{ contest.results.url }}" class="text-blue-500 underline text-lg">Итоги</a></li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

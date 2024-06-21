@@ -1,0 +1,45 @@
+<header class="flex items-center justify-between bg-gray-600 h-20 px-8 text-white sticky top-0 z-40">
+    <div>
+        <a class="flex items-center gap-2" href="/">
+            <img class="h-6" src="/static/images/logo.png" alt="Logo"/>
+            <span class="text-lg font-bold">ЦСОТ ДГУ</span>
+        </a>
+    </div>
+    <nav class="relative">
+        <ul class="flex items-center space-x-4">
+            <li x-data="{ dropdownOpen: false }" class="relative">
+                <a @click="dropdownOpen = !dropdownOpen" @click.away="dropdownOpen = false" class="cursor-pointer select-none">
+                    <div x-bind:class="dropdownOpen ? 'rotate-90 duration-300' : ''" class="w-6">
+                        <div class="bg-white h-1 mb-1"></div>
+                        <div class="bg-white h-1 mb-1"></div>
+                        <div class="bg-white h-1"></div>
+                    </div>
+                </a>
+                <div x-show="dropdownOpen" x-cloak class="absolute right-0 bg-white text-black shadow rounded-lg w-40 p-2 z-20"
+                     x-transition:enter="transition duration-300 ease-out"
+                     x-transition:enter-start="opacity-0 -translate-y-5 scale-90"
+                     x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                     x-transition:leave="transition duration-300 ease-in"
+                     x-transition:leave-start="opacity-100 translate-y-0 scale-100"
+                     x-transition:leave-end="opacity-0 -translate-y-5 scale-90"
+                >
+                    <ul class="hoverlist space-y-2">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="{% url 'users:contacts' %}">Контакты</a></li>
+                        <li><a href="{% url 'users:documents' %}">Нормативные документы</a></li>
+                        <li><a href="{% url 'users:instruct' %}">Инструктивные материалы</a></li>
+                        <li><a href="{% url 'users:presentations' %}">Презентации</a></li>
+                        <li><a href="{% url 'users:videomat' %}">Видеоматериалы</a></li>
+                        <li><a href="{% url 'users:metodmat' %}">Научно-методическая работа</a></li>
+                        <li><a href="{% url 'users:contests' %}">Конкурсы</a></li>
+                        {% if request.user.is_authenticated %}
+                            {% if user.is_staff %}
+                                <li><a href="/admin">Админ-панель</a></li>
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
